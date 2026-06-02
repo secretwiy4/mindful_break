@@ -40,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 12),
 
               const Text(
-                "Take a moment to breathe,\nreflect and recharge.",
+                "Take a moment to breathe, reflect and recharge.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
