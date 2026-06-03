@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
 
               // Logo
               Image.asset(
-                "assets/images/logo.png",
+                "images/lace.jpg",
                 height: 180,
               ),
 

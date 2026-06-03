@@ -21,7 +21,7 @@ class Onboarding2Screen extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              Image.asset("assets/images/onboarding2.png", height: 250),
+              Image.asset("images/lace.jpg", height: 250),
               const Spacer(),
               const Text(
                 "Manage Stress",

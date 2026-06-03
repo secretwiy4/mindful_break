@@ -15,7 +15,7 @@ class Onboarding3Screen extends StatelessWidget {
             children: [
               const SizedBox(height: 48), // Kosongkan ruang atas sbb xde skip butang dah
               const Spacer(),
-              Image.asset("assets/images/onboarding3.png", height: 250),
+              Image.asset("images/lace.jpg", height: 250),
               const Spacer(),
               const Text(
                 "Achieve Academic Balance",
