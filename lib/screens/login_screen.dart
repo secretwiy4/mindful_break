@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_break/screens/onboarding1_screen.dart';
 import 'createprofile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=> const Onboarding1Screen()));
                 },
                 icon: const Icon(Icons.arrow_back_ios),
               ),

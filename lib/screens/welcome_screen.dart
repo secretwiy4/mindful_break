@@ -9,87 +9,91 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F7FB),
 
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 20,
-          ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
 
-          child: Column(
-            children: [
-
-              const Spacer(),
-
-              // Logo
-              Image.asset(
-                "images/lace.jpg",
-                height: 180,
-              ),
-
-              const SizedBox(height: 30),
-
-              const Text(
-                "Mindful Break",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-              const SizedBox(height: 12),
-
-              const Text(
-                "Take a mindful break, you've got this",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                ),
-              ),
-
-              const Spacer(),
-
-              SizedBox(
-                width: double.infinity,
-                height: 55,
-
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) =>
-                        const Onboarding1Screen(),
-                      ),
-                    );
-                  },
-
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                    const Color(0xFF66BCA8),
-
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                      BorderRadius.circular(18),
-                    ),
-                  ),
-
-                  child: const Text(
-                    "Get Started",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-            ],
-          ),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("images/welcome frame bg.jpg"),
+            fit: BoxFit.cover,
         ),
       ),
+        
+        child: SafeArea(
+            child: Padding(
+                padding: const EdgeInsetsGeometry.symmetric(
+                  horizontal: 24,
+                  vertical: 20,
+                ),
+
+              child: Column(
+                children: [
+
+                  const Spacer(),
+
+                  const Text(
+                    "Mindful Break",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  const Text(
+                    "Take a mindful break, you've got this",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
+                  ),
+
+                  const Spacer(),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) =>
+                            const Onboarding1Screen(),
+                          ),
+                        );
+                      },
+
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                        const Color(0xFF66BCA8),
+
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                          BorderRadius.circular(18),
+                        ),
+                      ),
+
+                      child: const Text(
+                        "Get Started",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+              ]
+            ),
+              ),
+        ),
+        ),
     );
   }
 }
