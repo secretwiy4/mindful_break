@@ -41,7 +41,7 @@ class Onboarding2Screen extends StatelessWidget {
                     children: [
                       Container(width: 8, height: 8, decoration: BoxDecoration(color: Colors.black26, borderRadius: BorderRadius.circular(4))),
                       const SizedBox(width: 4),
-                      Container(width: 24, height: 8, decoration: BoxDecoration(color: const Color(0xFF5D6BFF), borderRadius: BorderRadius.circular(4))),
+                      Container(width: 24, height: 8, decoration: BoxDecoration(color: const Color(0xFF66BCA8), borderRadius: BorderRadius.circular(4))),
                       const SizedBox(width: 4),
                       Container(width: 8, height: 8, decoration: BoxDecoration(color: Colors.black26, borderRadius: BorderRadius.circular(4))),
                     ],
@@ -54,7 +54,7 @@ class Onboarding2Screen extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF5D6BFF),
+                      backgroundColor: const Color(0xFF66BCA8),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     ),
