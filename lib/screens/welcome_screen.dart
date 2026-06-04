@@ -35,8 +35,10 @@ class WelcomeScreen extends StatelessWidget {
                   const Text(
                     "Mindful Break",
                     style: TextStyle(
+                      fontFamily: "Black Ops One",
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white
                     ),
                   ),
 
@@ -46,6 +48,7 @@ class WelcomeScreen extends StatelessWidget {
                     "Take a mindful break, you've got this",
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.black54,
                     ),
