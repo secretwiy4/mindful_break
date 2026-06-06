@@ -66,7 +66,7 @@ class BreathingLibraryScreen extends StatelessWidget {
                       color: const Color(0xFF0C6955),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.15),
+                          color: Colors.black,
                           blurRadius: 10,
                           offset: const Offset(0, 5),
                         ),
