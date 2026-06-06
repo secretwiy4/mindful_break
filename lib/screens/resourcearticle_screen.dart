@@ -36,7 +36,7 @@ class ResourceArticleScreen extends StatelessWidget {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.05),
+                              color: Colors.black,
                               blurRadius: 10,
                               offset: const Offset(0, 2),
                             ),
@@ -152,7 +152,6 @@ class ResourceArticleScreen extends StatelessWidget {
                       height: 52,
                       child: ElevatedButton(
                         onPressed: () {
-                          // TODO: Tambah fungsi Navigator ke skrin breathing kau nanti
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: colorButton,
