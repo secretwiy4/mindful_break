@@ -9,7 +9,7 @@ class ResourceArticleScreen extends StatelessWidget {
     const colorBg = Color(0xffE8F7F2);
     const colorTextPrimary = Color(0xff1A3B32);
     const colorTextSecondary = Color(0xff3A5A50);
-    const colorButton = Color(0xff0D5C46); // Hijau pekat dari butang Done kau
+    const colorButton = Color(0xff0D5C46);
     const colorCardBorder = Color(0xffD1EAE2);
 
     return Scaffold(

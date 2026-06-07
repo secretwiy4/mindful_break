@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_break/auth_service.dart';
 import 'package:mindful_break/screens/onboarding1_screen.dart';
 import 'createprofile_screen.dart';
+import 'package:mindful_break/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,6 +14,53 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  final AuthService _authService = AuthService();
+  bool _isLoading = false;
+
+  void _handleLogin() async {
+    if (_emailController.text.trim().isEmpty || _passwordController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Fill in your email and password!")),
+      );
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    String? errorMesej = await _authService.loginWithEmailAndPassword(
+      _emailController.text.trim(),
+      _passwordController.text.trim(),
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (errorMesej == null) {
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const CreateProfileScreen()),
+        );
+      }
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(errorMesej), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
+
+    @override
+    void dispose () {
+      _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -72,19 +121,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: double.infinity,
                 height: 55,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Pindah ke Profile Creation dulu
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const CreateProfileScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF66BCA8),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  ),
-                  child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 16)),
+                onPressed: _isLoading ? null : _handleLogin,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF66BCA8),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
+                child: _isLoading
+                    ? const CircularProgressIndicator(color: Colors.white)
+                    : const Text("Login", style: TextStyle(color: Colors.white, fontSize: 16)),
+              ),
               ),
             ],
           ),
