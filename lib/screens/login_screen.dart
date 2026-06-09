@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mindful_break/auth_service.dart';
 import 'package:mindful_break/screens/onboarding1_screen.dart';
 import 'createprofile_screen.dart';
-import 'package:mindful_break/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

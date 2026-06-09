@@ -9,9 +9,9 @@ class AuthService {
         email: email,
         password: password,
       );
-      return null; // Pulangkan null maksudnya BERJAYA
+      return null;
     } on FirebaseAuthException catch (e) {
-      return e.message; // Pulangkan mesej error dari Firebase
+      return e.message;
     } catch (e) {
       return "Ada masalah teknikal berlaku. Cuba lagi.";
     }
@@ -23,9 +23,9 @@ class AuthService {
         email: email,
         password: password,
       );
-      return null; // Pulangkan null maksudnya BERJAYA LOGIN
+      return null;
     } on FirebaseAuthException catch (e) {
-      return e.message; // Pulangkan mesej error (contoh: salah password/user tak wujud)
+      return e.message;
     } catch (e) {
       return "Ada masalah teknikal berlaku. Cuba lagi.";
     }
