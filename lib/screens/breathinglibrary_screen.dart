@@ -264,6 +264,92 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
     }
   ];
 
+  void _showExitDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // User wajib tekan butang, tak leh klik luar untuk tutup
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20), // Bucu bulat macam Figma kau
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min, // Saiz kotak ikut isi kandungan
+              children: [
+                const Text(
+                  "Are you sure you want to end this session?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  "Your progress for this round won't be saved",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF1E614D),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          "End Session",
+                          style: TextStyle(color: Colors.white, fontSize: 13),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF1E614D),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          "Keep Breathing",
+                          style: TextStyle(color: Colors.white, fontSize: 13),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   void _nextStep() {
     setState(() {
       if (_currentStepIndex < _breathingSteps.length - 1) {
@@ -286,7 +372,17 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // 1. Tajuk Besar
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF1E614D)),
+                    onPressed: _showExitDialog, // Bila tekan, zass keluar overlay Figma tadi!
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
               const Text(
                 "4-7-8 Breathing",
                 style: TextStyle(
@@ -311,7 +407,7 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
                 height: currentStep["circleSize"],
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFF1E614D), // Hijau pekat ikut Figma
+                  color: Color(0xFF1E614D),
                 ),
                 child: Center(
                   child: Column(
@@ -339,7 +435,6 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
               ),
               const SizedBox(height: 40),
 
-              // 4. Teks Tips Kat Bawah
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
@@ -360,12 +455,12 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1E614D), // Warna butang ikut Figma
+                    backgroundColor: const Color(0xFF1E614D),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  onPressed: _nextStep, // Panggil fungsi tukar step manual
+                  onPressed: _nextStep,
                   child: Text(
                     _currentStepIndex == 2 ? "Finish" : "Next Step",
                     style: const TextStyle(fontSize: 16, color: Colors.white),
