@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "936274351135",
+    "project_id": "mindful-break-app",
+    "storage_bucket": "mindful-break-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936274351135:android:fb76fa9de3986a1e41f12a",
+        "android_client_info": {
+          "package_name": "com.example.mindful_break"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbxKWc-1h4f658NfrN_w0wJWC1hA9zgCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

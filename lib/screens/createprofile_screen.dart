@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'home_screen.dart';
 
 class CreateProfileScreen extends StatefulWidget {
   const CreateProfileScreen({super.key});
@@ -48,8 +49,12 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
       });
 
       if (mounted) {
-        Navigator.pushNamed(context, "/home");
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
       }
+
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.toString())),
@@ -59,13 +64,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
     setState(() {
       isLoading = false;
     });
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    super.dispose();
-  }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -153,28 +152,39 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                 width: double.infinity,
                 height: 55,
 
-                child: ElevatedButton(
-                  onPressed: isLoading ? null : saveProfile,
-
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF78CDBD),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      );
+                      saveProfile();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF7B608D),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      minimumSize: const Size(double.infinity, 55),
                     ),
-                  ),
-
-                  child: isLoading
-                      ? const CircularProgressIndicator(
-                    color: Colors.white,
+                    child: isLoading
+                        ? const SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2.5,
+                      ),
+                    )
+                        : const Text(
+                      "Continue",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                   )
-                      : const Text(
-                    "Next",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
               )
             ],
           ),
