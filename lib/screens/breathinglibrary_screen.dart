@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'breathingsuccess_screen.dart';
 
-class BreathingLibraryScreen extends StatelessWidget {
-  const BreathingLibraryScreen({super.key});
+class BreathingLibraryScreen extends StatefulWidget {
+  final String exerciseName;
+
+  const BreathingLibraryScreen({super.key, required this.exerciseName});
 
   @override
+  State<BreathingLibraryScreen> createState() => _BreathingLibraryScreenState();
+}
+
+class _BreathingLibraryScreenState extends State<BreathingLibraryScreen> {
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFDDF5EE),
@@ -53,7 +61,7 @@ class BreathingLibraryScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) =>
-                        const BreathingLibraryScreen(),
+                        const BreathingTimerScreen(exerciseName: 'exerciseName'),
                       ),
                     );
                   },
@@ -154,7 +162,7 @@ class BreathingLibraryScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) =>
-                                  const BreathingLibraryScreen(),
+                                  const BreathingTimerScreen(exerciseName: '',),
                                 ),
                               );
                             },
@@ -242,7 +250,7 @@ class BreathingTimerScreen extends StatefulWidget {
 }
 
 class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
-  int _currentStepIndex = 0; // Bermula dari Step 1 (Index 0)
+  int _currentStepIndex = 0;
 
 // List data untuk setiap langkah ikut Figma kau
   final List<Map<String, dynamic>> _breathingSteps = [
@@ -451,7 +459,6 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
               ),
               const SizedBox(height: 50),
 
-              // 5. Butang Manual Next / Continue
               SizedBox(
                 width: 200,
                 height: 50,
@@ -462,10 +469,23 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  onPressed: _nextStep,
+                  onPressed: () {
+                    if (_currentStepIndex == 2) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BreathingSuccessScreen(
+                            exerciseName: "exercise.Name",
+                          ),
+                        ),
+                      );
+                    } else {
+                      _nextStep();
+                    }
+                  },
                   child: Text(
                     _currentStepIndex == 2 ? "Finish" : "Next Step",
-                    style: const TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),
