@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_break/screens/breathingexercises_screen.dart';
 import 'package:mindful_break/screens/breathinglibrary_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -72,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) =>
-                                  const BreathingLibraryScreen(),
+                                  const BreathingExercisesScreen(),
                                 ),
                               );
                             },
