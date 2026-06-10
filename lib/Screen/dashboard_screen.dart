@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'examinfo_screen.dart';
 import 'tulip_pot_painter.dart';
 import 'task_icon_painter.dart';
 
