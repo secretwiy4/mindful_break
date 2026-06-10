@@ -61,7 +61,7 @@ class _BreathingLibraryScreenState extends State<BreathingLibraryScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (_) =>
-                        const BreathingLibraryScreen(),
+                        const BreathingTimerScreen(exerciseName: 'exerciseName'),
                       ),
                     );
                   },
@@ -162,7 +162,7 @@ class _BreathingLibraryScreenState extends State<BreathingLibraryScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) =>
-                                  const BreathingLibraryScreen(),
+                                  const BreathingTimerScreen(exerciseName: '',),
                                 ),
                               );
                             },
