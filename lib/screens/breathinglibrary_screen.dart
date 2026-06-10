@@ -53,7 +53,7 @@ class BreathingLibraryScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) =>
-                        const BreathingTimerScreen(),
+                        const BreathingLibraryScreen(),
                       ),
                     );
                   },
@@ -154,7 +154,7 @@ class BreathingLibraryScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) =>
-                                  const BreathingTimerScreen(),
+                                  const BreathingLibraryScreen(),
                                 ),
                               );
                             },
@@ -233,7 +233,9 @@ class _InfoItem extends StatelessWidget {
 /// nanti ganti dengan screen sebenar
 
 class BreathingTimerScreen extends StatefulWidget {
-  const BreathingTimerScreen({super.key});
+  final String exerciseName;
+
+  const BreathingTimerScreen({super.key, required this.exerciseName});
 
   @override
   State<BreathingTimerScreen> createState() => _BreathingTimerScreenState();
@@ -383,9 +385,9 @@ class _BreathingTimerScreenState extends State<BreathingTimerScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                "4-7-8 Breathing",
-                style: TextStyle(
+              Text(
+                widget.exerciseName,
+                style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF1E614D),

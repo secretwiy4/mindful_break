@@ -120,23 +120,23 @@ class _BreathingExercisesScreenState extends State<BreathingExercisesScreen> {
                         size: 18,
                       ),
                       onTap: () {
-                        if (item["name"] == "4-7-8 Breathing") {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const BreathingTimerScreen(),
+                              builder: (context) => BreathingTimerScreen(
+                                exerciseName: item["name"]!,
+                              ),
                             ),
                           );
-                        }
-                      },
+                        },
                     ),
                   );
-                },
+                      },
+                    ),
+                  ),
+          ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }
