@@ -43,7 +43,7 @@ class BreathingLibraryScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 60),
+                const SizedBox(height: 40),
 
                 // Play Button
                 GestureDetector(

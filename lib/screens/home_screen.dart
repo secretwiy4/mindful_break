@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_break/screens/breathinglibrary_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -67,7 +68,13 @@ class HomeScreen extends StatelessWidget {
                           // Start Breathing Button
                           ElevatedButton(
                             onPressed: () {
-                              // Letak navigation ke skrin breathing kau kat sini nanti
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                  const BreathingLibraryScreen(),
+                                ),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF0F4C3A),
