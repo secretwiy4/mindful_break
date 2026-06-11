@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mindful_break/Screen/dashboard_screen.dart';
+import 'personalize_experience.dart';
 import 'forgotpassword_screen.dart';
-import 'package:mindful_break/auth_service.dart';
-import 'package:mindful_break/screens/onboarding1_screen.dart';
-import 'breathinglibrary_screen.dart';
-import 'package:mindful_break/auth_service.dart';
 
 void main() {
   runApp(const MindfulBreakApp());
@@ -36,55 +32,10 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreen();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  String? _emailError;
-  String? _passwordError;
-  String? _generalError;
-
-  Future<void> _validateAndLogin() async {
-    setState(() {
-      _emailError = null;
-      _passwordError = null;
-      _generalError = null;
-    });
-
-    final email = _emailController.text.trim();
-    final password = _passwordController.text;
-
-    final emailRegex = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (email.isEmpty || !emailRegex.hasMatch(email)) {
-      setState(() => _emailError = 'Please enter a valid email address.');
-      return;
-    }
-
-    if (password.length < 8) {
-      setState(() => _passwordError = 'Password must be at least 8 characters.');
-      return;
-    }
-
-    final authService = AuthService();
-    final error = await authService.loginWithEmailAndPassword(email, password);
-
-    if (error != null) {
-      setState(() => _generalError = 'Invalid email or password. Please try again.');
-      return;
-    }
-
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const DashboardScreen(),
-        ),
-      );
-    }
-  }
+class _LoginScreen extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -216,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DashboardScreen(),
+                        builder: (context) => const PersonalizeScreen(),
                       ),
                     );
                   },

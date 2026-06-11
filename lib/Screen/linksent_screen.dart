@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_break/Screen/login_screen.dart';
 
 class LinkSentScreen extends StatelessWidget {
   const LinkSentScreen({super.key});
@@ -65,7 +66,12 @@ class LinkSentScreen extends StatelessWidget {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.popUntil(context, (route) => route.isFirst);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff417066),
