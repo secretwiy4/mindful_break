@@ -19,7 +19,7 @@ class CoverScreen extends StatelessWidget {
           width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/cover.jpg"),
+              image: AssetImage("images/Cover.jpg"),
               fit: BoxFit.cover,
             ),
           ),
