@@ -127,7 +127,7 @@ class CreateAccountScreen extends StatelessWidget {
                   onPressed: () {Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const DashboardScreen(),
+                      builder: (context) => const HomeScreen(),
                     ),
                   );
                   },
