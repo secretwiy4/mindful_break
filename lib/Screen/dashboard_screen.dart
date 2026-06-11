@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tulip_pot_painter.dart';
 import 'task_icon_painter.dart';
+import 'package:mindful_break/screens/breathingexercises_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -16,21 +17,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
     {
       'title': '15-Minute Mindful Walk',
       'subtitle': 'Focus on your breath and steps.',
+      'icon': Icons.directions_walk_rounded,
       'isCompleted': false,
     },
     {
       'title': 'Write Gratitude Journal',
       'subtitle': 'Record 3 good things from today.',
+      'icon': Icons.event_note_outlined,
       'isCompleted': false,
     },
     {
       'title': '5-Minutes Meditation',
       'subtitle': 'Clear your mind and relax.',
+      'icon': Icons.self_improvement,
       'isCompleted': false,
     },
     {
       'title': 'Drink a Glass of Water',
       'subtitle': 'Stay hydrated and refreshed.',
+      'icon': Icons.local_drink_rounded,
       'isCompleted': false,
     },
   ];
@@ -96,7 +101,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BreathingExercisesScreen(),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff1f3d37),
                             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
