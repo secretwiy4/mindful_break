@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mindful_break/screens/breathingexercises_screen.dart';
 import 'package:mindful_break/screens/breathinglibrary_screen.dart';
-import 'package:mindful_break/screens/stressmanagement_stress.dart'; // 👈 Tambah line ni!
+import 'package:mindful_break/screens/stressmanagement_stress.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,9 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
         _buildHomeContent(),
       const Center(child: Text("Study Tips Screen Soon")),
       const StressManagementScreen(),
-      const Center(child: Text("Personal Growth Screen Soon")),
       const Center(child: Text("Progress Screen Soon")),
-        const Center(child: Text("Profile Screen Soon")),
+      const ProfileScreen(),
       ][_currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
