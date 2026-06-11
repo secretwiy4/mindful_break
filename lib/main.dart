@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xffD9F5ED),
-        fontFamily: 'Sans-Serif',
       ),
       home: const MainNavigation(),
     );
@@ -43,6 +42,26 @@ class _MainNavigationState extends State<MainNavigation> {
     });
   }
 
+  void _onBottomNavTapped(int index) {
+    int targetPage = index;
+
+    if (index == 0) {
+      targetPage = 2;
+    } else if (index == 1) {
+      targetPage = 0;
+    } else if (index == 2) {
+      targetPage = 3;
+    } else if (index == 3) {
+      targetPage = 5;
+    }
+
+    _pageController.animateToPage(
+      targetPage,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
   void _nextPage() {
     _pageController.nextPage(
       duration: const Duration(milliseconds: 300),
@@ -58,7 +77,7 @@ class _MainNavigationState extends State<MainNavigation> {
       ReminderScreen(onNext: _nextPage),
       MoodTrackerScreen(onNext: _nextPage),
       ProgressReminderScreen(onNext: _nextPage),
-      ProgressOverviewScreen(),
+      const ProgressOverviewScreen(),
     ];
 
     bool showBottomNav = _currentIndex >= 2;
@@ -72,19 +91,20 @@ class _MainNavigationState extends State<MainNavigation> {
       ),
       bottomNavigationBar: showBottomNav
           ? BottomNavigationBar(
-        currentIndex: (_currentIndex - 2).clamp(0, 4),
+        currentIndex: _currentIndex == 5 ? 3 : (_currentIndex - 2).clamp(0, 4),
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         selectedItemColor: const Color(0xff3D5A50),
         unselectedItemColor: Colors.grey,
         selectedFontSize: 10,
         unselectedFontSize: 10,
+        onTap: _onBottomNavTapped,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Study Tips'),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today_outlined), label: 'Personal Growth'),
-          BottomNavigationBarItem(icon: Icon(Icons.bar_chart_outlined), label: 'Progress'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'Study Tips'),
+          BottomNavigationBarItem(icon: Icon(Icons.trending_up), label: 'Personal Growth'),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Progress'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       )
           : null,
