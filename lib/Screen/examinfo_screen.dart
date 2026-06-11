@@ -121,7 +121,7 @@ class _ExamInfoScreenState extends State<ExamInfoScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DashboardScreen(),
+                        builder: (context) => const HomeScreen(),
                       ),
                     );
                   }

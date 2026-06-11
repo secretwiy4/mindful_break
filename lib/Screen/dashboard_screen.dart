@@ -1,248 +1,214 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_break/screens/breathingexercises_screen.dart';
+import 'package:mindful_break/screens/breathinglibrary_screen.dart';
+import 'package:mindful_break/screens/stressmanagement_stress.dart';
+import 'package:mindful_break/Screen/profile_screen.dart';
 import 'tulip_pot_painter.dart';
 import 'task_icon_painter.dart';
+import 'package:mindful_break/screens/profile_screen.dart';
 
-class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
-}
+  State<HomeScreen> createState() => _HomeScreenState();}
 
-class _DashboardScreenState extends State<DashboardScreen> {
-  int _currentNavIndex = 0;
-
-  final List<Map<String, dynamic>> _todoItems = [
-    {
-      'title': '15-Minute Mindful Walk',
-      'subtitle': 'Focus on your breath and steps.',
-      'isCompleted': false,
-    },
-    {
-      'title': 'Write Gratitude Journal',
-      'subtitle': 'Record 3 good things from today.',
-      'isCompleted': false,
-    },
-    {
-      'title': '5-Minutes Meditation',
-      'subtitle': 'Clear your mind and relax.',
-      'isCompleted': false,
-    },
-    {
-      'title': 'Drink a Glass of Water',
-      'subtitle': 'Stay hydrated and refreshed.',
-      'isCompleted': false,
-    },
-  ];
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff3f3f3),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Good Morning, Girls',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.black,
-                  letterSpacing: -0.5,
-                ),
+      backgroundColor: Colors.white,
+      body: [
+        _buildHomeContent(),
+        const Center(child: Text("Study Tips Screen Soon")),
+        const StressManagementScreen(),
+        const Center(child: Text("Progress Screen Soon")),
+        const ProfileScreen(),
+      ][_currentIndex],
+
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: const Color(0xFF0F4C3A),
+        unselectedItemColor: Colors.grey,
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'Study Tips'),
+          BottomNavigationBarItem(icon: Icon(Icons.trending_up), label: 'Personal Growth'),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Progress'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHomeContent(){
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            const Text(
+              "Good Morning, Girls",
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
-              const SizedBox(height: 2),
-              const Text(
-                'You\'ve got this!',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black54,
-                ),
+            ),
+            const SizedBox(height: 5),
+            const Text(
+              "You've got this!",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
               ),
-              const SizedBox(height: 20),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  color: const Color(0xff99d5ca),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Stack(
-                  children: [
-                    Column(
+            ),
+            const SizedBox(height: 25),
+
+            // Daily Focus Green Card
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: const Color(0xFFA2E0C9),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Daily Focus',
+                          "Daily Focus",
                           style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w800,
-                            color: Color(0xff1f3d37),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFF0F4C3A),
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 8),
                         const Text(
-                          'Stay Present, one breath\nat a time',
+                          "Stay Present, one breath at a time",
                           style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff1f3d37),
-                            height: 1.2,
+                            fontSize: 14,
+                            color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 15),
+                        // Start Breathing Button
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                const BreathingExercisesScreen(),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xff1f3d37),
-                            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                            backgroundColor: const Color(0xFF0F4C3A),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 12),
                           ),
                           child: const Text(
-                            'Start Breathing',
+                            "Start Breathing",
                             style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
                     ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: SizedBox(
-                        width: 70,
-                        height: 70,
-                        child: CustomPaint(
-                          painter: TulipPotPainter(),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 10),
+                  const Icon(
+                    Icons.local_florist,
+                    size: 60,
+                    color: Color(0xFF0F4C3A),
+                  ),
+                ],
               ),
-              const SizedBox(height: 28),
-              const Text(
-                'Today\'s Plan',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.black,
-                ),
-              ),
+            ),
+            const SizedBox(height: 30),
 
-              const SizedBox(height: 12),
-              Column(
-                children: _todoItems.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  var item = entry.value;
-                  bool isDone = item['isCompleted'];
-
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _todoItems[index]['isCompleted'] = !isDone;
-                      });
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 10),
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(14),
-                        border: Border.all(color: const Color(0xffcccccc), width: 1.2),
-                      ),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 28,
-                            height: 28,
-                            child: CustomPaint(
-                              painter: TaskIconPainter(iconIndex: index),
-                            ),
-                          ),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  item['title'],
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black,
-                                    letterSpacing: -0.2,
-                                  ),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  item['subtitle'],
-                                  style: const TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          AnimatedContainer(
-                            duration: const Duration(milliseconds: 150),
-                            width: 22,
-                            height: 22,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: isDone ? const Color(0xff1f3d37) : Colors.transparent,
-                              border: Border.all(
-                                color: isDone ? Colors.transparent : const Color(0xff888888),
-                                width: 1.5,
-                              ),
-                            ),
-                            child: isDone
-                                ? const Icon(Icons.check, color: Colors.white, size: 14)
-                                : null,
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                }).toList(),
+            // Section: Today's Plan
+            const Text(
+              "Today's Plan",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          border: Border(top: BorderSide(color: Color(0xffdddddd), width: 1)),
-        ),
-        child: BottomNavigationBar(
-          currentIndex: _currentNavIndex,
-          onTap: (index) => setState(() => _currentNavIndex = index),
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: const Color(0xfff3f3f3),
-          selectedItemColor: const Color(0xff1f3d37),
-          unselectedItemColor: Colors.black38,
-          selectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
-          unselectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), activeIcon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Study Tips'),
-            BottomNavigationBarItem(icon: Icon(Icons.spa_outlined), activeIcon: Icon(Icons.spa), label: 'Personal Growth'),
-            BottomNavigationBarItem(icon: Icon(Icons.bar_chart_rounded), label: 'Progress'),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded), activeIcon: Icon(Icons.person), label: 'Profile'),
+            ),
+            const SizedBox(height: 15),
+
+            // List of Plan Items
+            _buildPlanItem(Icons.directions_walk, "15-Minute Mindful Walk",
+                "Focus on your breath and steps."),
+            _buildPlanItem(Icons.edit, "Write Gratitude Journal",
+                "Record 3 good things from today."),
+            _buildPlanItem(Icons.self_improvement, "5-Minutes Meditation",
+                "Clear your mind and relax."),
+            _buildPlanItem(Icons.local_drink, "Drink a Glass of Water",
+                "Stay hydrated and refreshed."),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildPlanItem(IconData icon, String title, String subtitle) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.grey.shade300, width: 1.5),
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.grey.shade100,
+            child: Icon(icon, color: Colors.black87),
+          ),
+          const SizedBox(width: 15),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  subtitle,
+                  style: const TextStyle(color: Colors.grey, fontSize: 12),
+                ),
+              ],
+            ),
+          ),
+          Icon(Icons.check_circle_outline, color: Colors.grey.shade400),
+        ],
       ),
     );
   }

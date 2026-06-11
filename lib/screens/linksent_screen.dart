@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mindful_break/Screen/login_screen.dart';
+import 'package:mindful_break/Screen/login_screen.dart';
 
 class LinkSentScreen extends StatelessWidget {
   const LinkSentScreen({super.key});

@@ -18,7 +18,7 @@ class MindfulBreakApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFFFAFDFB),
         fontFamily: 'Sans-Serif',
       ),
-      home: const MainNavigationController(),
+      home: const LoginScreen(),
     );
   }
 }
@@ -28,14 +28,14 @@ const Color kGrayBorder = Color(0xFFE0E0E0);
 const Color kTextSub = Color(0xFF7A7A7A);
 const Color kBlueMood = Color(0xFF4285F4);
 
-class MainNavigationController extends StatefulWidget {
-  const MainNavigationController({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<MainNavigationController> createState() => _MainNavigationControllerState();
+  State<LoginScreen> createState() => _LoginScreen();
 }
 
-class _MainNavigationControllerState extends State<MainNavigationController> {
+class _LoginScreen extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {

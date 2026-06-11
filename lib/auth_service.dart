@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mindful_break/auth_service.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -13,7 +14,7 @@ class AuthService {
     } on FirebaseAuthException catch (e) {
       return e.message;
     } catch (e) {
-      return "Ada masalah teknikal berlaku. Cuba lagi.";
+      return "A technical error occurred. Please try again.";
     }
   }
 
@@ -27,7 +28,7 @@ class AuthService {
     } on FirebaseAuthException catch (e) {
       return e.message;
     } catch (e) {
-      return "Ada masalah teknikal berlaku. Cuba lagi.";
+      return "A technical error occurred. Please try again.";
     }
   }
 }
