@@ -1,82 +1,69 @@
 import 'package:flutter/material.dart';
-import 'reminder_screen.dart';
+import 'package:flutter/material.dart';
 
 class AddActivitiesScreen extends StatelessWidget {
-  const AddActivitiesScreen({super.key});
+  final VoidCallback onNext;
+  const AddActivitiesScreen({super.key, required this.onNext});
 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> activities = [
-      {'name': 'Breathing Exercise', 'icon': Icons.air},
-      {'name': 'Study Session', 'icon': Icons.menu_book},
-      {'name': 'Self-care Activity', 'icon': Icons.spa},
-      {'name': 'Mindful Walk', 'icon': Icons.directions_walk},
-      {'name': 'Journal', 'icon': Icons.book_online},
-      {'name': 'Reminder', 'icon': Icons.notifications_none},
+      {'name': 'Breathing Exercise', 'icon': Icons.air_outlined},
+      {'name': 'Study Session', 'icon': Icons.menu_book_outlined},
+      {'name': 'Self-care Activity', 'icon': Icons.spa_outlined},
+      {'name': 'Mindful Walk', 'icon': Icons.directions_walk_outlined},
+      {'name': 'Journal', 'icon': Icons.edit_note_outlined},
+      {'name': 'Reminder', 'icon': Icons.notifications_none_outlined},
     ];
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
-                onPressed: () => Navigator.pop(context),
+              const Icon(Icons.arrow_back_ios, color: Colors.black, size: 18),
+              const SizedBox(height: 10),
+              const Text(
+                'Add Activity',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xff1C2E2A)),
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: Text(
-                  'Add Activity',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xff1C2E2A)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 8.0, bottom: 25.0),
-                child: Text('What would you like to add?', style: TextStyle(fontSize: 14, color: Colors.grey)),
-              ),
+              const Text('What would you like to add?', style: TextStyle(fontSize: 13, color: Colors.black54)),
+              const SizedBox(height: 25),
               Expanded(
                 child: ListView.builder(
                   itemCount: activities.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: const EdgeInsets.only(bottom: 15),
-                      height: 55,
+                      margin: const EdgeInsets.only(bottom: 12),
+                      height: 48,
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey.shade300, width: 0.5),
+                        color: const Color(0xffF5FBF9),
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(color: Colors.black87, width: 0.8),
                       ),
                       child: Row(
                         children: [
-                          Icon(activities[index]['icon'], color: Colors.black54, size: 22),
+                          Icon(activities[index]['icon'], color: Colors.black87, size: 20),
                           const SizedBox(width: 15),
-                          Text(activities[index]['name'], style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                          Text(activities[index]['name'], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87)),
                         ],
                       ),
                     );
                   },
                 ),
               ),
-              // Button Next Berfungsi
-              Container(
-                margin: const EdgeInsets.only(bottom: 10),
+              SizedBox(
                 width: double.infinity,
-                height: 45,
+                height: 42,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff3D5A50),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ReminderScreen()),
-                    );
-                  },
+                  onPressed: onNext,
                   child: const Text('Next', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
