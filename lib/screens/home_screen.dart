@@ -1,16 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:mindful_break/screens/breathingexercises_screen.dart';
 import 'package:mindful_break/screens/breathinglibrary_screen.dart';
+import 'package:mindful_break/screens/stressmanagement_stress.dart'; // 👈 Tambah line ni!
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: [
+        _buildHomeContent(),
+      const Center(child: Text("Study Tips Screen Soon")),
+      const StressManagementScreen(),
+      const Center(child: Text("Personal Growth Screen Soon")),
+      const Center(child: Text("Progress Screen Soon")),
+        const Center(child: Text("Profile Screen Soon")),
+      ][_currentIndex],
+
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: const Color(0xFF0F4C3A),
+        unselectedItemColor: Colors.grey,
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'Study Tips'),
+          BottomNavigationBarItem(icon: Icon(Icons.trending_up), label: 'Personal Growth'),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Progress'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHomeContent(){
+  return SafeArea(
+    child: SingleChildScrollView(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,24 +168,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-
-      // Bottom Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: const Color(0xFF0F4C3A),
-        unselectedItemColor: Colors.grey,
-        currentIndex: 0,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'Study Tips'),
-          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Personal Growth'),
-          BottomNavigationBarItem(icon: Icon(Icons.trending_up), label: 'Progress'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-      ),
-    );
+      );
   }
 
   Widget _buildPlanItem(IconData icon, String title, String subtitle) {
