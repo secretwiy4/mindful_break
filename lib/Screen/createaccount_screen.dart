@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mindful_break/Screen/dashboard_screen.dart';
 import 'package:mindful_break/screens/welcome_screen.dart';
+import 'package:mindful_break/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
