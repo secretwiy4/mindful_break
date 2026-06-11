@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'screens/welcome_screen.dart'; // Memanggil skrin welcome kamu yang betul
+import 'package:mindful_break/screens/cover_screen.dart';
+import 'package:mindful_break/screens/home_screen.dart';
+import 'screens/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mindful Break',
-      debugShowCheckedModeBanner: false, // Hilangkan tag debug merah dekat emulator
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const WelcomeScreen(), // Set skrin utama ke WelcomeScreen
+      home: const CoverScreen(),
     );
   }
 }

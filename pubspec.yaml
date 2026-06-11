@@ -71,6 +71,7 @@ flutter:
   - images/welcome frame bg.jpg
   - images/ocean.jpg
   - images/cat.jpg
+  - images/Cover.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
