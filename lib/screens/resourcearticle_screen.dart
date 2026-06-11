@@ -169,14 +169,12 @@ class ResourceArticleScreen extends StatelessWidget {
                       }).toList(),
                     ),
                     const SizedBox(height: 32),
-
-                    // BUTTON CALL-TO-ACTION (CTA)
                     SizedBox(
                       width: double.infinity,
                       height: 52,
                       child: ElevatedButton(
                         onPressed: () {
-                          String breathingType = "Deep Breathing"; // Default
+                          String breathingType = "Deep Breathing";
 
                           if (title == "During Exam Week") {
                             breathingType = "4-7-8 Breathing";

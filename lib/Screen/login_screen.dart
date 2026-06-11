@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'personalize_experience.dart';
 import 'forgotpassword_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(const MindfulBreakApp());
