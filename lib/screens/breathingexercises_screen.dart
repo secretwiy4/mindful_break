@@ -123,7 +123,7 @@ class _BreathingExercisesScreenState extends State<BreathingExercisesScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => BreathingTimerScreen(
+                              builder: (context) => BreathingLibraryScreen(
                                 exerciseName: item["name"]!,
                               ),
                             ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mindful_break/Screen/login_screen.dart';
+import 'package:mindful_break/screens/onboarding1.dart';
 import '../theme_colors.dart';
-import 'package:mindful_break/screens/onboarding1_screen.dart';
-import 'package:mindful_break/Screen/createaccount_screen.dart';
+import 'onboarding1.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -53,15 +52,13 @@ class WelcomeScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const CreateAccountScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const Onboarding1()));
                   },
                   child: const Text('Get Started', style: TextStyle(color: AppColors.darkSage, fontSize: 16, fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 16),
                 TextButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
-                  },
+                  onPressed: () {},
                   child: const Text(
                     'I already have an account',
                     style: TextStyle(color: AppColors.darkSage, decoration: TextDecoration.underline),
