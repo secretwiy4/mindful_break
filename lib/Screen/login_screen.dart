@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
 import 'personalize_experience.dart';
 import 'forgotpassword_screen.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+void addUserEmail(String userId, String email) async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref("users/$userId");
+
+  await ref.set({
+    "email": email,
+    "createdAt": DateTime.now().toString(),
+  });
+
+  print("Data berjaya disimpan!");
+}
+
+void readData() {
+  DatabaseReference ref = FirebaseDatabase.instance.ref("users");
+
+  ref.onValue.listen((DatabaseEvent event) {
+    final data = event.snapshot.value;
+    print("Data dari Firebase: $data");
+  });
+}
 
 void main() {
   runApp(const MindfulBreakApp());

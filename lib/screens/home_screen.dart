@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mindful_break/screens/breathingexercises_screen.dart';
 import 'package:mindful_break/screens/breathinglibrary_screen.dart';
+import 'package:mindful_break/screens/progress_reminder_screen.dart';
 import 'package:mindful_break/screens/stressmanagement_stress.dart';
-import 'profile_screen.dart';
+import 'package:mindful_break/screens/study_tips_screen.dart';
+import 'package:mindful_break/screens/profile_screen.dart';
+import 'package:mindful_break/screens/progress_reminder_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,24 +22,21 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       body: [
         _buildHomeContent(),
-      const Center(child: Text("Study Tips Screen Soon")),
-      const StressManagementScreen(),
-      const Center(child: Text("Progress Screen Soon")),
-      const ProfileScreen(),
+      StudyTipsScreen(),
+      StressManagementScreen(),
+      ProgressReminderScreen(),
+      ProfileScreen(),
       ][_currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: const Color(0xFF0F4C3A),
-        unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-        items: [
+        type: BottomNavigationBarType.fixed,
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'Study Tips'),
           BottomNavigationBarItem(icon: Icon(Icons.trending_up), label: 'Personal Growth'),
