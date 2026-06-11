@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mindful_break/Screen/login_screen.dart';
-import 'package:mindful_break/screens/onboarding1.dart';
 import '../theme_colors.dart';
-import 'onboarding1.dart';
+import 'package:mindful_break/screens/onboarding1_screen.dart';
 import 'package:mindful_break/Screen/createaccount_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {

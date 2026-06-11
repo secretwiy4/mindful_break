@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mindful_break/screens/home_screen.dart';
-import 'package:mindful_break/screens/stressmanagement_stress.dart';
 import 'firebase_options.dart';
 import 'screens/welcome_screen.dart';
 
