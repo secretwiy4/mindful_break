@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_break/screens/onboarding1.dart';
 import '../theme_colors.dart';
-import 'help_support.dart';
+import 'onboarding1.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -10,9 +11,10 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/welcome.png"),
+            image: AssetImage("images/Welcome frame.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -50,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const HelpSupport()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const Onboarding1()));
                   },
                   child: const Text('Get Started', style: TextStyle(color: AppColors.darkSage, fontSize: 16, fontWeight: FontWeight.bold)),
                 ),

@@ -12,7 +12,7 @@ class Onboarding1 extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/onboarding1.jpg"),
+            image: AssetImage("images/Onboarding 2.jpg"),
             fit: BoxFit.cover,
           ),
         ),
