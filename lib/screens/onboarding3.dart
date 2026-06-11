@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme_colors.dart';
-import 'welcome_screen.dart';
+import 'welcome_frame.dart';
 
 class Onboarding3 extends StatelessWidget {
   const Onboarding3({super.key});
