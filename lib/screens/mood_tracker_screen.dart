@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'progress_overview_screen.dart';
 
 class MoodTrackerScreen extends StatelessWidget {
-  const MoodTrackerScreen({super.key});
+  final VoidCallback onNext;
+  const MoodTrackerScreen({super.key, required this.onNext});
 
   @override
   Widget build(BuildContext context) {
@@ -12,21 +12,21 @@ class MoodTrackerScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              const Text('How are you feeling today?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 5),
-              const Text('< May 2026 >', style: TextStyle(color: Colors.grey, fontSize: 13)),
-              const SizedBox(height: 20),
+              const Text('How are you feeling today?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xff1C2E2A))),
+              const SizedBox(height: 4),
+              const Text('< May 2026 >', style: TextStyle(color: Colors.black54, fontSize: 12)),
+              const SizedBox(height: 15),
 
               Table(
                 children: [
                   const TableRow(children: [
-                    Center(child: Text('S', style: TextStyle(fontWeight: FontWeight.bold))),
-                    Center(child: Text('M', style: TextStyle(fontWeight: FontWeight.bold))),
-                    Center(child: Text('T', style: TextStyle(fontWeight: FontWeight.bold))),
-                    Center(child: Text('W', style: TextStyle(fontWeight: FontWeight.bold))),
-                    Center(child: Text('T', style: TextStyle(fontWeight: FontWeight.bold))),
-                    Center(child: Text('F', style: TextStyle(fontWeight: FontWeight.bold))),
-                    Center(child: Text('S', style: TextStyle(fontWeight: FontWeight.bold)))
+                    Center(child: Text('S', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600))),
+                    Center(child: Text('M', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600))),
+                    Center(child: Text('T', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600))),
+                    Center(child: Text('W', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600))),
+                    Center(child: Text('T', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600))),
+                    Center(child: Text('F', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600))),
+                    Center(child: Text('S', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)))
                   ]),
                   _buildCalendarRow(['1','2','3','4','5','6','7'], highlight: true),
                   _buildCalendarRow(['8','9','10','11','12','13','14'], highlight: true),
@@ -35,12 +35,12 @@ class MoodTrackerScreen extends StatelessWidget {
                   _buildCalendarRow(['29','30','','','','','']),
                 ],
               ),
-              const SizedBox(height: 30),
-              const Text("Today's mood", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               const SizedBox(height: 20),
+              const Text("Today's mood", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Color(0xff1C2E2A))),
+              const SizedBox(height: 15),
 
               Wrap(
-                spacing: 20, runSpacing: 20,
+                spacing: 15, runSpacing: 15,
                 alignment: WrapAlignment.center,
                 children: [
                   _buildMoodIcon('😊', 'Ecstatic'), _buildMoodIcon('🙂', 'Happy'),
@@ -49,21 +49,16 @@ class MoodTrackerScreen extends StatelessWidget {
                   _buildMoodIcon('😴', 'Sleepy'), _buildMoodIcon('😡', 'Angry'),
                 ],
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 25),
               SizedBox(
                 width: double.infinity,
-                height: 45,
+                height: 42,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff3D5A50),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ProgressOverviewScreen()),
-                    );
-                  },
+                  onPressed: onNext,
                   child: const Text('Next', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
@@ -78,13 +73,13 @@ class MoodTrackerScreen extends StatelessWidget {
     return TableRow(
       children: days.map((day) {
         return Container(
-          margin: const EdgeInsets.all(4),
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          margin: const EdgeInsets.all(3),
+          padding: const EdgeInsets.symmetric(vertical: 6),
           decoration: BoxDecoration(
             color: highlight && day.isNotEmpty ? const Color(0xffBCE8DB) : Colors.transparent,
             shape: BoxShape.circle,
           ),
-          child: Center(child: Text(day, style: const TextStyle(fontSize: 14))),
+          child: Center(child: Text(day, style: const TextStyle(fontSize: 13, color: Colors.black87))),
         );
       }).toList(),
     );
@@ -92,12 +87,12 @@ class MoodTrackerScreen extends StatelessWidget {
 
   Widget _buildMoodIcon(String emoji, String label) {
     return SizedBox(
-      width: 65,
+      width: 60,
       child: Column(
         children: [
-          Text(emoji, style: const TextStyle(fontSize: 32)),
-          const SizedBox(height: 4),
-          Text(label, style: const TextStyle(fontSize: 10, color: Colors.black54), textAlign: TextAlign.center),
+          Text(emoji, style: const TextStyle(fontSize: 28)),
+          const SizedBox(height: 2),
+          Text(label, style: const TextStyle(fontSize: 9, color: Colors.black54), textAlign: TextAlign.center),
         ],
       ),
     );
